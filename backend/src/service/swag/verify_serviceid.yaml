@@ -1,0 +1,35 @@
+tags:
+  - VERIFY-SERVICE-ID
+summary: "Verify service_id validity"
+description: "Check if the provided service_id exists in the database."
+parameters:
+  - name: service_id
+    in: query
+    type: string
+    required: true
+    description: "The ID of the service to verify"
+responses:
+  200:
+    description: "Verification result"
+    schema:
+      type: "object"
+      properties:
+        is_valid:
+          type: "boolean"
+          example: true
+  400:
+    description: "Invalid input"
+    schema:
+      type: "object"
+      properties:
+        error:
+          type: "string"
+          example: "service_id is required"
+  500:
+    description: "Internal server error"
+    schema:
+      type: "object"
+      properties:
+        error:
+          type: "string"
+          example: "Error verifying service ID"

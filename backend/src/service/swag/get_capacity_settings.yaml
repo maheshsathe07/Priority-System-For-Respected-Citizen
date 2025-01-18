@@ -1,0 +1,63 @@
+tags:
+  - Appointment Settings
+summary: "Get appointment capacity settings"
+description: "Retrieve capacity settings for morning and afternoon sessions for a specific date"
+produces:
+  - application/json
+parameters:
+  - name: date
+    in: query
+    type: string
+    format: date
+    required: true
+    description: "Date in YYYY-MM-DD format"
+    example: "2025-01-15"
+responses:
+  200:
+    description: "Capacity settings retrieved successfully"
+    schema:
+      type: object
+      properties:
+        date:
+          type: string
+          example: "2025-01-15"
+        morning_capacity:
+          type: object
+          properties:
+            total:
+              type: integer
+              example: 20
+            respectedCitizen:
+              type: integer
+              example: 15
+            civilian:
+              type: integer
+              example: 5
+        afternoon_capacity:
+          type: object
+          properties:
+            total:
+              type: integer
+              example: 20
+            respectedCitizen:
+              type: integer
+              example: 15
+            civilian:
+              type: integer
+              example: 5
+  400:
+    description: "Invalid input"
+    schema:
+      type: object
+      properties:
+        error:
+          type: string
+          example: "Date parameter is required"
+  500:
+    description: "Internal server error"
+    schema:
+      type: object
+      properties:
+        error:
+          type: string
+          example: "Error fetching capacity settings: <error details>"

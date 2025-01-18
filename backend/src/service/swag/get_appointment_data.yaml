@@ -1,0 +1,85 @@
+tags:
+  - Appointments
+summary: "Fetch appointments by filters"
+description: >
+  Fetch appointments from the database using the provided filters 
+  (e.g., respected citizen status, appointment date).
+parameters:
+  - name: isRespectedCitizen
+    in: query
+    type: string
+    required: false
+    description: "Filter by respected citizen status (true/false)."
+    example: "true"
+  - name: date
+    in: query
+    type: string
+    required: false
+    description: "Filter by appointment date (format: YYYY-MM-DD)."
+    example: "2025-01-20"
+  - name: page
+    in: query
+    type: integer
+    required: false
+    description: "Page number for pagination."
+    example: 1
+  - name: limit
+    in: query
+    type: integer
+    required: false
+    description: "Number of records per page."
+    example: 10
+responses:
+  200:
+    description: "Data retrieved successfully."
+    schema:
+      type: "object"
+      properties:
+        data:
+          type: "array"
+          items:
+            type: "object"
+            properties:
+              _id:
+                type: "string"
+                example: "67854ab0000b405d4a647d1a"
+              name:
+                type: "string"
+                example: "Prem"
+              category:
+                type: "string"
+                example: "Civilian"
+              preferred_date:
+                type: "string"
+                example: "2025-01-20"
+              preferred_time:
+                type: "string"
+                example: "10:00 AM - 12:00 PM"
+              respected_citizen:
+                type: "boolean"
+                example: false
+              service_id:
+                type: ["string", "null"]
+                example: null
+        page:
+          type: "integer"
+          example: 1
+        limit:
+          type: "integer"
+          example: 10
+  400:
+    description: "Invalid input."
+    schema:
+      type: "object"
+      properties:
+        error:
+          type: "string"
+          example: "Invalid date format. Expected YYYY-MM-DD."
+  500:
+    description: "Internal server error."
+    schema:
+      type: "object"
+      properties:
+        error:
+          type: "string"
+          example: "Error fetching data."

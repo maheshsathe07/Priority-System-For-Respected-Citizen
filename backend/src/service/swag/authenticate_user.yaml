@@ -1,0 +1,96 @@
+tags:
+  - AUTHENTICATE-USER
+summary: "Authenticate a user"
+description: "Verify the user's mobile number and password for authentication."
+parameters:
+  - in: body
+    name: credentials
+    required: true
+    schema:
+      type: object
+      properties:
+        email:
+          type: string
+          description: "The email of the user"
+        password:
+          type: string
+          description: "The password of the user"
+      required:
+        - email
+        - password
+responses:
+  200:
+    description: "Authentication successful"
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            message:
+              type: string
+              example: "Authentication successful"
+            user:
+              type: object
+              properties:
+                _id:
+                  type: string
+                  example: "677beb88653726019b238e12"
+                name:
+                  type: string
+                  example: "Piyush HH"
+                email:
+                  type: string
+                  example: "abcd1212@gmail.com"
+                city:
+                  type: string
+                  example: "Unknown"
+  401:
+    description: "Invalid password"
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            error:
+              type: string
+              example: "Invalid password"
+  404:
+    description: "User not found"
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            error:
+              type: string
+              example: "User not found"
+  400:
+    description: "Invalid input"
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            error:
+              type: string
+              example: "Email and password are required"
+  415:
+    description: "Unsupported Media Type"
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            error:
+              type: string
+              example: "Content-Type must be application/json"
+  500:
+    description: "Internal server error"
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            error:
+              type: string
+              example: "Error authenticating user: <error details>"

@@ -1,0 +1,67 @@
+tags:
+  - ADD-NEW-USER
+summary: "Add a new user"
+description: "Add a new user to the database with name, email, city, and password."
+consumes:
+  - "application/json"
+produces:
+  - "application/json"
+parameters:
+  - in: body
+    name: body
+    required: true
+    schema:
+      type: object
+      required:
+        - name
+        - email
+        - password
+      properties:
+        name:
+          type: string
+          example: "John Doe"
+        email:
+          type: string
+          example: "john.doe@example.com"
+        city:
+          type: string
+          example: "Pune"
+        password:
+          type: string
+          example: "securepassword123"
+responses:
+  201:
+    description: "User added successfully"
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "User added successfully"
+        user_id:
+          type: string
+          example: "64b0b1234abcd567ef123456"
+  400:
+    description: "Invalid input or missing fields"
+    schema:
+      type: object
+      properties:
+        error:
+          type: string
+          example: "Missing required fields: name, email"
+  415:
+    description: "Unsupported Media Type"
+    schema:
+      type: object
+      properties:
+        error:
+          type: string
+          example: "Content-Type must be application/json"
+  500:
+    description: "Internal server error"
+    schema:
+      type: object
+      properties:
+        error:
+          type: string
+          example: "Error adding user: <error details>"

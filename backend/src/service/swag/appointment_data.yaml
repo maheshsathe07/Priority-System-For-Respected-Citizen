@@ -1,0 +1,63 @@
+tags:
+  - ADD-RESPECTED-CITIZEN
+summary: "Add a new respected citizen"
+description: "Add a person with category and preferred date and time. If service_id is provided, mark them as a respected citizen."
+parameters:
+  - name: name
+    in: query
+    type: string
+    required: true
+    description: "Name of the person"
+    example: "John Doe"
+  - name: category
+    in: query
+    type: string
+    required: true
+    description: "Category of the person (civilian, army, military personnel, jawan, veteran)"
+    example: "army"
+  - name: preferred_date
+    in: query
+    type: string
+    required: true
+    description: "Preferred date"
+    example: "2025-01-15"
+  - name: preferred_time
+    in: query
+    type: string
+    required: true
+    description: "Preferred time slot"
+    example: "10:00 AM - 12:00 PM"
+  - name: service_id
+    in: query
+    type: string
+    required: false
+    description: "Service ID to mark as respected citizen"
+    example: "ABC123"
+responses:
+  201:
+    description: "Person added successfully"
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Person added successfully"
+        person_id:
+          type: string
+          example: "64b0b1234abcd567ef123456"
+  400:
+    description: "Invalid input or missing fields"
+    schema:
+      type: object
+      properties:
+        error:
+          type: string
+          example: "'name' is required"
+  500:
+    description: "Internal server error"
+    schema:
+      type: object
+      properties:
+        error:
+          type: string
+          example: "Error adding respected citizen: <error details>"

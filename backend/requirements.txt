@@ -1,0 +1,19 @@
+# Flask framework for building APIs
+Flask==2.3.3
+
+# Enable Cross-Origin Resource Sharing
+flask-cors==3.0.10
+
+# MongoDB driver for Python
+
+pymongo[srv]==4.6.1 
+certifi
+
+# Support for MongoDB DNS Seed List Connection Format
+dnspython==2.4.2
+
+# Swagger UI for API documentation
+flasgger
+
+# dotenv for environment variable management
+python-dotenv==1.0.0

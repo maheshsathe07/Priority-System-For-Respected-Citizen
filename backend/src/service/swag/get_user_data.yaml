@@ -1,0 +1,74 @@
+tags:
+  - GET-USER-DATA-BY-FILTERS
+summary: "Get data by category and/or date"
+description: "Fetch data from the database by the given filters (category and/or date)."
+parameters:
+  - name: category
+    in: query
+    type: string
+    required: false
+    description: "Filter data by category"
+    enum:
+      - Civilian
+      - Military
+      - Jawan
+      - Veteran
+  - name: date
+    in: query
+    type: string
+    required: false
+    description: "Filter data by appointment date (format: YYYY-MM-DD)"
+responses:
+  200:
+    description: "OK"
+    schema:
+      type: "object"
+      properties:
+        data:
+          type: "array"
+          items:
+            type: "object"
+            properties:
+              name:
+                type: "string"
+                example: "Mahesh Sathe"
+              aadhar_number:
+                type: "string"
+                example: "671295256798"
+              email:
+                type: "string"
+                example: "sathem205@gmail.com"
+              appointment_date:
+                type: "string"
+                example: "2025-01-05"
+              appointment_time:
+                type: "string"
+                example: "18:50:00"
+              appointment_reason:
+                type: "string"
+                example: "Driving License"
+              service_category:
+                type: "string"
+                example: "Civilian"
+              password:
+                type: "string"
+                example: "mahesh12"
+              announcement:
+                type: "boolean"
+                example: false
+  400:
+    description: "Invalid input"
+    schema:
+      type: "object"
+      properties:
+        error:
+          type: "string"
+          example: "Invalid input"
+  500:
+    description: "Internal server error"
+    schema:
+      type: "object"
+      properties:
+        error:
+          type: "string"
+          example: "Error fetching data"

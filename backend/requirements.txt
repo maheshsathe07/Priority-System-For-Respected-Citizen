@@ -17,3 +17,5 @@ flasgger
 
 # dotenv for environment variable management
 python-dotenv==1.0.0
+
+bcrypt

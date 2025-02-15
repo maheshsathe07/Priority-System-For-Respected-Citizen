@@ -5,7 +5,7 @@ Developed an innovative system to honor and prioritize esteemed citizens like mi
 
 1. Appointment Booking: Enables civilians and esteemed citizens to book appointments for specific RTO services. Esteemed citizens can verify their service ID for priority booking.
 2. Real-Time Updates: Sends real-time application status and personalized thank-you messages via Twilio, ensuring transparency and respectful interactions.
-3. License Plate Recognition: Automatically detects vehicle license plates using YOLOv8, OpenCV, and OCR upon entry to the RTO. If the vehicle belongs to an esteemed citizen, a personalized welcome message is sent, acknowledging their contribution to the country.
+3. License Plate Recognition: Automatically detects vehicle license plates using YOLOv8, OpenCV, and OCR upon entry to the RTO. If the vehicle belongs to an esteemed citizen, a personalized welcome message is sent, acknowledging their contribution to the country. (Note for this functionality refer this repo : `https://github.com/maheshsathe07/Argus-AI-powered-Traffic-Enforcement-Platform`
 4. Streamlined Priority System: Ensures a top-tier, efficient service experience for respected citizens, enhancing satisfaction and reducing wait times.
 
 ## Technologies Used:
